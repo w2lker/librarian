@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { BookList } from './Book/BookList/BookList';
+import { Header } from './Header';
+import { BookPage } from './Book/BookPage/BookPage';
+import { BookCreate } from './Book/BookPage/BookCreate';
 
-function App() {
-  fetch('/api/books').then(response => console.log(response));
+const App = () => {
+  const [bookId, setBookId] = useState<number>();
+  const [isCreating, setIsCreating] = useState(false);
+
+  const handleBack = () => {
+    setBookId(0);
+    setIsCreating(false);
+  };
+
+  const handleCreated = (id: number) => {
+    setBookId(id);
+    setIsCreating(false);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+        bookSelected={!!bookId}
+        onBack={handleBack}
+        onCreate={() => {setIsCreating(true)}}
+      />
+      {!isCreating && !bookId && <BookList onSelect={(id) => setBookId(id)}/>}
+      {!!bookId && <BookPage bookId={bookId} onClose={handleBack}/>}
+      {isCreating && <BookCreate onSelect={handleCreated} onCancel={handleBack}/>}
     </div>
   );
 }

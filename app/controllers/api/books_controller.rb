@@ -1,8 +1,12 @@
 module Api
   class BooksController < ApplicationController
     def index
-      @books = Book.all
-      render json: @books
+      @books = Book.order(created_at: :desc).page(params[:page]).per(50)
+      render json: {
+        data: ActiveModelSerializers::SerializableResource.new(@books, each_serializer: BookSerializer),
+        page: params[:page] || 1,
+        hasNext: @books.next_page.present?
+      }
     end
 
     def show
@@ -37,7 +41,7 @@ module Api
     private
 
     def book_params
-      params.require(:book).permit(:name, :author, :ISBN, :publisher, :year, skills: [])
+      params.require(:book).permit(:name, :author, :ISBN, :publisher, :year, :coverURL, skills: [])
     end
   end
 end

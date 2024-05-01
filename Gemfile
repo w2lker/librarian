@@ -47,3 +47,7 @@ end
 
 
 gem 'activerecord-postgres_enum'
+
+gem 'kaminari'
+
+gem 'active_model_serializers'

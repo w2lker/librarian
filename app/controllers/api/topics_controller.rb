@@ -1,13 +1,8 @@
 module Api
   class TopicsController < ApplicationController
     def index
-      @topics = Topic.all
+      @topics = Topic.where(book_id: params[:book_id])
       render json: @topics
-    end
-
-    def show
-      @topic = Topic.find(params[:id])
-      render json: @topic
     end
 
     def create

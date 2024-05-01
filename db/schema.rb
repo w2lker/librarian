@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_29_192824) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_01_203350) do
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.string "author"
@@ -20,17 +20,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_192824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "skills", default: "{}"
+    t.string "coverURL"
   end
 
   create_table "topics", force: :cascade do |t|
     t.string "tag"
     t.text "description"
-    t.integer "skill"
     t.integer "book_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "skills", default: "{}"
-    t.index ["book_id", "tag"], name: "index_topics_on_book_id_and_tag", unique: true
+    t.index ["book_id", "tag"], name: "index_topics_on_book_id_and_tag"
     t.index ["book_id"], name: "index_topics_on_book_id"
   end
 
