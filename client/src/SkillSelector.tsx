@@ -24,7 +24,7 @@ export const SkillSelector = forwardRef<HTMLDivElement, SkillSelectorProps>(({va
   return (
     <div ref={ref} className="input input-bordered flex items-center gap-2 flex-wrap h-auto p-2">
       {availableSkills.map((skill) => (
-        <div key={skill} className="form-control w-2/5">
+        <div key={skill} className="form-control w-full md:w-2/5">
           <label className="label cursor-pointer mr-10">
             <span className="label-text">{skill}</span>
             <input type="checkbox" className="checkbox" checked={selected.has(skill)} onChange={() => onToggleSkill(skill)} />

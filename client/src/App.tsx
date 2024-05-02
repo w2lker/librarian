@@ -6,7 +6,7 @@ import { BookPage } from './Book/BookPage/BookPage';
 import { BookCreate } from './Book/BookPage/BookCreate';
 
 const App = () => {
-  const [bookId, setBookId] = useState<number>();
+  const [bookId, setBookId] = useState<number>(110);
   const [isCreating, setIsCreating] = useState(false);
 
   const handleBack = () => {

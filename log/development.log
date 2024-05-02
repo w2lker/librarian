@@ -8227,3 +8227,882 @@ Processing by Api::BooksController#index as */*
 Completed 200 OK in 73ms (Views: 34.5ms | ActiveRecord: 19.9ms | Allocations: 2498)
 
 
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 21:54:15 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.28ms)
+Completed 200 OK in 12ms (Views: 2.7ms | ActiveRecord: 3.1ms | Allocations: 2498)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 21:58:03 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.32ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (31.82ms)
+Completed 200 OK in 59ms (Views: 32.7ms | ActiveRecord: 1.5ms | Allocations: 29224)
+
+
+Started GET "/api/books/111" for 127.0.0.1 at 2024-05-01 21:59:16 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"111"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 111], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 2797)
+
+
+Started GET "/api/topics?book_id=111" for 127.0.0.1 at 2024-05-01 21:59:16 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"111"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 111]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.04ms)
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 2380)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 21:59:18 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.15ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 2229)
+
+
+Started GET "/api/topics?book_id=111" for 127.0.0.1 at 2024-05-01 21:59:47 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"111"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 111]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.03ms)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 802)
+
+
+Started GET "/api/books/111" for 127.0.0.1 at 2024-05-01 21:59:47 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"111"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 111], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 666)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 21:59:51 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.16ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/topics?book_id=111" for 127.0.0.1 at 2024-05-01 21:59:52 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"111"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 111]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.04ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 803)
+
+
+Started GET "/api/books/111" for 127.0.0.1 at 2024-05-01 21:59:52 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"111"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 111], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 677)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:00:05 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.44ms)
+Completed 200 OK in 10ms (Views: 5.1ms | ActiveRecord: 1.0ms | Allocations: 2208)
+
+
+Started GET "/api/books/106" for 127.0.0.1 at 2024-05-01 22:00:07 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"106"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 106], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 659)
+
+
+Started GET "/api/topics?book_id=106" for 127.0.0.1 at 2024-05-01 22:00:07 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"106"}
+  [1m[36mTopic Load (0.0ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 106]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.03ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 802)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:00:09 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.48ms)
+Completed 200 OK in 5ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 2208)
+
+
+Started GET "/api/books/112" for 127.0.0.1 at 2024-05-01 22:00:09 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"112"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 112], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 661)
+
+
+Started GET "/api/topics?book_id=112" for 127.0.0.1 at 2024-05-01 22:00:09 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"112"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 112]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 8, tag: "Feelings", description: "Put the feelings of others first", book_id: 112, created_at: "2024-05-01 23:55:26.064107000 +0000", updated_at: "2024-05-01 23:55:26.064107000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 6504)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:00:10 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.72ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.57ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 2208)
+
+
+Started GET "/api/books/110" for 127.0.0.1 at 2024-05-01 22:00:11 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"110"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 110], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (1.05ms)
+Completed 200 OK in 10ms (Views: 6.9ms | ActiveRecord: 0.2ms | Allocations: 663)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-01 22:00:11 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 1109)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:02:29 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.89ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books/110" for 127.0.0.1 at 2024-05-01 22:02:32 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"110"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 110], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 662)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-01 22:02:32 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1109)
+
+
+Started GET "/api/books/110" for 127.0.0.1 at 2024-05-01 22:05:43 -0500
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-01 22:05:43 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"110"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 110], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 671)
+
+
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.24ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1108)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:05:57 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.0ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.15ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.4ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:06:03 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.11ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:06:05 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.88ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books/110" for 127.0.0.1 at 2024-05-01 22:06:06 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"110"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 110], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 663)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-01 22:06:06 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.29ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 1109)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:06:09 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.95ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.81ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:13:51 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.96ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 1.3ms | Allocations: 2501)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:14:00 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.18ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:14:15 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.46ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:14:29 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.28ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.67ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:14:39 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.9ms)
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.4ms | Allocations: 2208)
+
+
+Started GET "/api/books/112" for 127.0.0.1 at 2024-05-01 22:15:05 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"112"}
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 112], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 704)
+
+
+Started GET "/api/topics?book_id=112" for 127.0.0.1 at 2024-05-01 22:15:05 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"112"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 112]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 8, tag: "Feelings", description: "Put the feelings of others first", book_id: 112, created_at: "2024-05-01 23:55:26.064107000 +0000", updated_at: "2024-05-01 23:55:26.064107000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.09ms)
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1007)
+
+
+Started GET "/api/books/112" for 127.0.0.1 at 2024-05-01 22:15:19 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"112"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 112], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Started GET "/api/topics?book_id=112" for 127.0.0.1 at 2024-05-01 22:15:19 -0500
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1007)
+
+
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"112"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 112]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 8, tag: "Feelings", description: "Put the feelings of others first", book_id: 112, created_at: "2024-05-01 23:55:26.064107000 +0000", updated_at: "2024-05-01 23:55:26.064107000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.1ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 978)
+
+
+Started PUT "/api/books/112" for 127.0.0.1 at 2024-05-01 22:15:22 -0500
+Processing by Api::BooksController#update as */*
+  Parameters: {"id"=>"112", "name"=>"Canadian workplace culture", "author"=>"Matt Adolphe", "ISBN"=>"9780986852848", "publisher"=>"Bold World Books", "year"=>"2014", "coverURL"=>"https://m.media-amazon.com/images/I/612d4maZnpL._AC_UF1000,1000_QL80_.jpg", "skills"=>["reading"], "book"=>{"id"=>"112", "name"=>"Canadian workplace culture", "author"=>"Matt Adolphe", "ISBN"=>"9780986852848", "publisher"=>"Bold World Books", "year"=>"2014", "skills"=>["reading"], "coverURL"=>"https://m.media-amazon.com/images/I/612d4maZnpL._AC_UF1000,1000_QL80_.jpg"}}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 112], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:27:in `update'
+[31mUnpermitted parameter: :id. Context: { controller: Api::BooksController, action: update, request: #<ActionDispatch::Request:0x00000001176d1600>, params: {"id"=>"112", "name"=>"Canadian workplace culture", "author"=>"Matt Adolphe", "ISBN"=>"9780986852848", "publisher"=>"Bold World Books", "year"=>"2014", "coverURL"=>"https://m.media-amazon.com/images/I/612d4maZnpL._AC_UF1000,1000_QL80_.jpg", "skills"=>["reading"], "controller"=>"api/books", "action"=>"update", "book"=>{"id"=>"112", "name"=>"Canadian workplace culture", "author"=>"Matt Adolphe", "ISBN"=>"9780986852848", "publisher"=>"Bold World Books", "year"=>"2014", "skills"=>["reading"], "coverURL"=>"https://m.media-amazon.com/images/I/612d4maZnpL._AC_UF1000,1000_QL80_.jpg"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/books_controller.rb:28:in `update'
+  [1m[36mBook Update (0.6ms)[0m  [1m[33mUPDATE "books" SET "updated_at" = ?, "coverURL" = ? WHERE "books"."id" = ?[0m  [["updated_at", "2024-05-02 03:15:22.790962"], ["coverURL", "https://m.media-amazon.com/images/I/612d4maZnpL._AC_UF1000,1000_QL80_.jpg"], ["id", 112]]
+  ↳ app/controllers/api/books_controller.rb:28:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/books_controller.rb:28:in `update'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 3344)
+
+
+Started GET "/api/books/112" for 127.0.0.1 at 2024-05-01 22:15:22 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"112"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 112], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 660)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:15:24 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.27ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:15:28 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.84ms)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 192.168.100.159 at 2024-05-01 22:15:37 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.58ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.08ms)
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 2210)
+
+
+Started GET "/main.2c24f18da7717526397d.hot-update.json" for 192.168.100.159 at 2024-05-01 22:15:38 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/main.2c24f18da7717526397d.hot-update.json"):
+  
+Started GET "/api/books?page=1" for 192.168.100.159 at 2024-05-01 22:15:39 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.47ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.13ms)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 2209)
+
+
+Started GET "/api/books/111" for 192.168.100.159 at 2024-05-01 22:15:43 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"111"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 111], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 664)
+
+
+Started GET "/api/topics?book_id=111" for 192.168.100.159 at 2024-05-01 22:15:43 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"111"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 111]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 805)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:17:24 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.61ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:18:13 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.84ms)
+Completed 200 OK in 10ms (Views: 5.0ms | ActiveRecord: 0.2ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:19:05 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.1ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:21:03 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.31ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:21:31 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.03ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:21:33 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.41ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:21:49 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.94ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-01 22:22:16 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.87ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-02 16:21:11 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.9ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (18.42ms)
+Completed 200 OK in 43ms (Views: 19.5ms | ActiveRecord: 1.5ms | Allocations: 29231)
+
+
+Started GET "/api/books/111" for 127.0.0.1 at 2024-05-02 16:21:20 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"111"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 111], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1417)
+
+
+Started GET "/api/topics?book_id=111" for 127.0.0.1 at 2024-05-02 16:21:20 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"111"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 111]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.03ms)
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 2374)
+
+
+Started GET "/api/topics?book_id=111" for 127.0.0.1 at 2024-05-02 16:21:26 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"111"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 111]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.03ms)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 928)
+
+
+Started GET "/api/books/111" for 127.0.0.1 at 2024-05-02 16:21:26 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"111"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 111], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 681)
+
+
+Started GET "/api/books/111" for 127.0.0.1 at 2024-05-02 16:21:31 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"111"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 111], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 677)
+
+
+Started GET "/api/topics?book_id=111" for 127.0.0.1 at 2024-05-02 16:21:31 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"111"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 111]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.03ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 801)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-02 16:21:35 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.86ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.4ms | Allocations: 2215)
+
+
+Started GET "/api/books/112" for 127.0.0.1 at 2024-05-02 16:21:36 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"112"}
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 112], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.7ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.3ms | Allocations: 661)
+
+
+Started GET "/api/topics?book_id=112" for 127.0.0.1 at 2024-05-02 16:21:36 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"112"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 112]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 8, tag: "Feelings", description: "Put the feelings of others first", book_id: 112, created_at: "2024-05-01 23:55:26.064107000 +0000", updated_at: "2024-05-01 23:55:26.064107000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.11ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 6465)
+
+
+Started GET "/api/books?page=1" for 127.0.0.1 at 2024-05-02 16:21:41 -0500
+Processing by Api::BooksController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mBook Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  ↳ app/controllers/api/books_controller.rb:8:in `index'
+[active_model_serializers]   [1m[36mBook Load (0.0ms)[0m  [1m[34mSELECT "books".* FROM "books" ORDER BY "books"."created_at" DESC LIMIT ? OFFSET ?[0m  [["LIMIT", 50], ["OFFSET", 0]]
+[active_model_serializers]   ↳ app/controllers/api/books_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.22ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.06ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/api/books/110" for 127.0.0.1 at 2024-05-02 16:21:42 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"110"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 110], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 663)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-02 16:21:42 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.19ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1110)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-02 16:21:47 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1108)
+
+
+Started GET "/api/books/110" for 127.0.0.1 at 2024-05-02 16:21:47 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"110"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 110], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 663)
+
+
+Started GET "/api/books/110" for 127.0.0.1 at 2024-05-02 16:21:48 -0500
+Processing by Api::BooksController#show as */*
+  Parameters: {"id"=>"110"}
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = ? LIMIT ?[0m  [["id", 110], ["LIMIT", 1]]
+  ↳ app/controllers/api/books_controller.rb:13:in `show'
+[active_model_serializers] Rendered BookSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 662)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-02 16:21:48 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.23ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1108)
+
+
+Started GET "/api/unique_tags" for 127.0.0.1 at 2024-05-02 16:31:23 -0500
+Processing by Api::TopicsController#unique_tags as */*
+  [1m[36mTopic Pluck (0.8ms)[0m  [1m[34mSELECT DISTINCT "topics"."tag" FROM "topics" WHERE NOT (("topics"."tag" = ? OR "topics"."tag" IS NULL))[0m  [["tag", ""]]
+  ↳ app/controllers/api/topics_controller.rb:33:in `unique_tags'
+No serializer found for resource: "Food"
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.03ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 1.3ms | Allocations: 1093)
+
+
+Started PUT "/api/topics/2" for 127.0.0.1 at 2024-05-02 16:32:17 -0500
+Processing by Api::TopicsController#update as */*
+  Parameters: {"id"=>"2", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z", "topic"=>{"id"=>"2", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z"}}
+  [1m[36mTopic Load (0.2ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/topics_controller.rb:18:in `update'
+[31mUnpermitted parameters: :id, :created_at, :updated_at. Context: { controller: Api::TopicsController, action: update, request: #<ActionDispatch::Request:0x0000000114937500>, params: {"id"=>"2", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z", "controller"=>"api/topics", "action"=>"update", "topic"=>{"id"=>"2", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Topic (0.3ms)
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 1471)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-02 16:32:17 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.19ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1136)
+
+
+Started GET "/api/unique_tags" for 127.0.0.1 at 2024-05-02 16:32:19 -0500
+Processing by Api::TopicsController#unique_tags as */*
+  [1m[36mTopic Pluck (0.2ms)[0m  [1m[34mSELECT DISTINCT "topics"."tag" FROM "topics" WHERE NOT (("topics"."tag" = ? OR "topics"."tag" IS NULL))[0m  [["tag", ""]]
+  ↳ app/controllers/api/topics_controller.rb:33:in `unique_tags'
+No serializer found for resource: "Food"
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.04ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 643)
+
+
+Started PUT "/api/topics/2" for 127.0.0.1 at 2024-05-02 16:32:37 -0500
+Processing by Api::TopicsController#update as */*
+  Parameters: {"id"=>"2", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z", "topic"=>{"id"=>"2", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z"}}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/topics_controller.rb:18:in `update'
+[31mUnpermitted parameters: :id, :created_at, :updated_at. Context: { controller: Api::TopicsController, action: update, request: #<ActionDispatch::Request:0x00000001149b1558>, params: {"id"=>"2", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z", "controller"=>"api/topics", "action"=>"update", "topic"=>{"id"=>"2", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Topic (0.14ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 870)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-02 16:32:37 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "Travelling", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-01 23:47:32.284014000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.18ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 1108)
+
+
+Started GET "/api/unique_tags" for 127.0.0.1 at 2024-05-02 16:32:39 -0500
+Processing by Api::TopicsController#unique_tags as */*
+  [1m[36mTopic Pluck (0.3ms)[0m  [1m[34mSELECT DISTINCT "topics"."tag" FROM "topics" WHERE NOT (("topics"."tag" = ? OR "topics"."tag" IS NULL))[0m  [["tag", ""]]
+  ↳ app/controllers/api/topics_controller.rb:33:in `unique_tags'
+No serializer found for resource: "Food"
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.03ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 643)
+
+
+Started PUT "/api/topics/2" for 127.0.0.1 at 2024-05-02 16:32:43 -0500
+Processing by Api::TopicsController#update as */*
+  Parameters: {"id"=>"2", "tag"=>"", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z", "topic"=>{"id"=>"2", "tag"=>"", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z"}}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/topics_controller.rb:18:in `update'
+[31mUnpermitted parameters: :id, :created_at, :updated_at. Context: { controller: Api::TopicsController, action: update, request: #<ActionDispatch::Request:0x0000000114a7b740>, params: {"id"=>"2", "tag"=>"", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z", "controller"=>"api/topics", "action"=>"update", "topic"=>{"id"=>"2", "tag"=>"", "description"=>"The mountain trail advanture: what to expect", "book_id"=>110, "created_at"=>"2024-05-01T20:21:38.191Z", "updated_at"=>"2024-05-01T23:47:32.284Z"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/topics_controller.rb:19:in `update'
+  [1m[36mTopic Update (2.7ms)[0m  [1m[33mUPDATE "topics" SET "tag" = ?, "updated_at" = ? WHERE "topics"."id" = ?[0m  [["tag", ""], ["updated_at", "2024-05-02 21:32:43.331614"], ["id", 2]]
+  ↳ app/controllers/api/topics_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/topics_controller.rb:19:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Topic (0.12ms)
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 3.2ms | Allocations: 2588)
+
+
+Started GET "/api/topics?book_id=110" for 127.0.0.1 at 2024-05-02 16:32:43 -0500
+Processing by Api::TopicsController#index as */*
+  Parameters: {"book_id"=>"110"}
+  [1m[36mTopic Load (0.1ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."book_id" = ?[0m  [["book_id", 110]]
+  ↳ app/controllers/api/topics_controller.rb:5:in `index'
+No serializer found for resource: #<Topic id: 2, tag: "", description: "The mountain trail advanture: what to expect", book_id: 110, created_at: "2024-05-01 20:21:38.191377000 +0000", updated_at: "2024-05-02 21:32:43.331614000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Topic::ActiveRecord_Relation (0.19ms)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1108)
+
+
+Started GET "/api/unique_tags" for 127.0.0.1 at 2024-05-02 16:32:44 -0500
+Processing by Api::TopicsController#unique_tags as */*
+  [1m[36mTopic Pluck (0.2ms)[0m  [1m[34mSELECT DISTINCT "topics"."tag" FROM "topics" WHERE NOT (("topics"."tag" = ? OR "topics"."tag" IS NULL))[0m  [["tag", ""]]
+  ↳ app/controllers/api/topics_controller.rb:33:in `unique_tags'
+No serializer found for resource: "Food"
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.03ms)
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 639)
+
+
+Started GET "/api/unique_tags" for 127.0.0.1 at 2024-05-02 16:33:19 -0500
+Processing by Api::TopicsController#unique_tags as */*
+  [1m[36mTopic Pluck (0.1ms)[0m  [1m[34mSELECT DISTINCT "topics"."tag" FROM "topics" WHERE NOT (("topics"."tag" = ? OR "topics"."tag" IS NULL))[0m  [["tag", ""]]
+  ↳ app/controllers/api/topics_controller.rb:33:in `unique_tags'
+No serializer found for resource: "Food"
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Array (0.02ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 639)
+
+

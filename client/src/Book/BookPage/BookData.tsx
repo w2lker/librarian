@@ -10,7 +10,7 @@ type BookDataProps = {
 export const BookData: React.FC<BookDataProps> = ({book, onEdit, onDelete}) => {
   return (
     <div className="max-w-screen-lg mx-auto p-4 flex flex-wrap">
-      <div className="flex-1 w-1/2 md:w-1/2 sm:w-full">
+      <div className="w-full md:w-1/2 lg:w-1/3">
         {book.coverURL && (
           <img
             src={book.coverURL}
@@ -23,7 +23,7 @@ export const BookData: React.FC<BookDataProps> = ({book, onEdit, onDelete}) => {
         )}
       </div>
 
-      <div className="flex-auto w-2/3 md:w-1/2 sm:w-full p-4">
+      <div className="w-full md:w-1/2 lg:w-2/3 p-4">
         <div className="overflow-x-auto">
           <table className="table table-zebra">
             <tbody>

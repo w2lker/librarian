@@ -23,7 +23,7 @@ export const BookList: React.FC<BookListProps> = ({onSelect}) => {
 
   return (
     <Fragment>
-      <div className="max-w-screen-lg mx-auto p-4 flex flex-wrap gap-4 justify-center">
+      <div className="max-w-screen-lg mx-auto p-4 block md:flex flex-wrap gap-4 justify-center">
         {data.pages.map((page, index) => (
           <Fragment key={index}>
             {page.data.map((book) => (

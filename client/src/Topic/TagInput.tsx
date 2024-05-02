@@ -29,7 +29,7 @@ export const TagInput: React.FC<TagInputProps> = ({ value, defaultValue, onChang
           onBlur={onBlur}
         />
       </label>
-      {suggestions.length && (
+      {suggestions.length !== 0 && (
         <label className="form-control w-full mt-4">
           <div className="label">
             <span className="label-text">Suggestions</span>

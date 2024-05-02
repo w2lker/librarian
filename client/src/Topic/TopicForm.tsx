@@ -15,9 +15,9 @@ export const TopicForm: React.FC<TopicFormProps> = ({topic, bookId, onSubmit}) =
 
   return (
     <form onSubmit={handleSubmit(prepareData)}>
-      <div className="card w-100% bg-base-100 shadow-xl">
+      <div className="card w-100% bg-base-100 shadow-xl mb-8">
         <div className="card-body">
-          <div className="flex justify-stretch gap-10">
+          <div className=" block md:flex justify-stretch gap-10">
             <Controller
               name="tag"
               control={control}

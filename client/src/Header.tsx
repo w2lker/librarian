@@ -20,13 +20,16 @@ export const Header: React.FC<HeaderProps> = ({ bookSelected, onBack, onCreate }
 
   return (
     <div className="navbar bg-base-100 shadow-lg">
-      <div className="flex-1">
+      <div className="flex-1 hidden sm:flex">
         <a className="btn btn-ghost text-xl">The Librarian</a>
       </div>
-      <div className="flex-none gap-2">
-        <div className="form-control">
-          <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+      <div className="flex-1">
+        <div role="tablist" className="tabs tabs-boxed">
+          <a role="tab" className="tab tab-active">Books</a>
+          <a role="tab" className="tab disabled:">Search</a>
         </div>
+      </div>
+      <div className="flex-none gap-2">
         <button className="btn btn-primary" onClick={onCreate}>+ Add book</button>
       </div>
     </div>

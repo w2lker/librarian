@@ -7,7 +7,7 @@ type BookListItemProps = {
 
 export const BookListItem: React.FC<BookListItemProps> = ({book, onSelect}) => {
   return (
-    <div className="card bg-base-100 shadow-xl w-2/5">
+    <div className="card bg-base-100 shadow-xl w-full md:w-2/5 cursor-pointer" onClick={onSelect}>
       <figure className="px-10 pt-10">
         {book.coverURL && (
           <img src={book.coverURL} alt="Book cover" className="rounded-xl" />
