@@ -4,7 +4,7 @@ import { BookRepo } from "../BookRepo";
 import { BookForm } from "./BookForm";
 import { BookData } from "./BookData";
 import { BookDTO } from "../BookDTO";
-import { TopicList } from "../../Topic/TopicList";
+import { TopicList } from "../../Topic/TopicList/TopicList";
 
 type BookPageProps = {
   bookId: number;

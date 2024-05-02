@@ -32,4 +32,8 @@ export const TopicAPI = {
     });
     return {};
   },
+  tagList: async (): Promise<string[]> => {
+    const response = await fetch('/api/unique_tags');
+    return response.json();
+  }
 };

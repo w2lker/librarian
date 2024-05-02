@@ -1,6 +1,6 @@
 export type TopicDTO = {
   id: number;
-  bookId: number;
+  book_id: number;
   tag: string;
   description: string;
 };

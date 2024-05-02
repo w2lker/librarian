@@ -14,9 +14,9 @@ export const TopicRepo = {
 
     return useMutation({
       mutationFn: (topic: TopicDTO) => TopicAPI.addTopic(topic),
-      onSuccess: (data) => {
+      onSuccess: (_, topic) => {
         queryClient.invalidateQueries({
-          queryKey: ['topics', data.bookId],
+          queryKey: ['topics', topic.book_id],
         });
       }
     });
@@ -26,11 +26,30 @@ export const TopicRepo = {
 
     return useMutation({
       mutationFn: (topic: TopicDTO) => TopicAPI.updateTopic(topic),
-      onSuccess: (data) => {
+      onSuccess: (_, topic) => {
         queryClient.invalidateQueries({
-          queryKey: ['topics', data.bookId],
+          queryKey: ['topics', topic.book_id],
         });
       }
     });
   },
+  useDelete: () => {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+      mutationFn: (params: {topicId: number, bookId: number}) => TopicAPI.deleteTopic(params.topicId),
+      onSuccess: (_, params) => {
+        queryClient.invalidateQueries({
+          queryKey: ['topics', params.bookId],
+        });
+      }
+    });
+  },
+
+  useTags: () => {
+    return useQuery({
+      queryKey: ['tags'],
+      queryFn: TopicAPI.tagList,
+    });
+  }
 };

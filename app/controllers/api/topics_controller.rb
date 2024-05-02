@@ -29,10 +29,15 @@ module Api
       head :no_content
     end
 
+    def unique_tags
+      tags = Topic.where.not(tag: [nil, ""]).select(:tag).distinct.pluck(:tag)
+      render json: tags
+    end
+
     private
 
     def topic_params
-      params.require(:topic).permit(:tag, :description, :skill)
+      params.require(:topic).permit(:tag, :description, :book_id)
     end
   end
 end
