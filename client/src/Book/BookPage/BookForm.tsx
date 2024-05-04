@@ -1,8 +1,31 @@
 import React, { useEffect } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup";
+import classNames from "classnames";
 
 import { BookDTO } from "../BookDTO";
 import { SkillSelector } from "../../SkillSelector";
+
+const schema = yup.object({
+  name: yup.string().required(),
+  author: yup.string(),
+  ISBN: yup.string(),
+  year: yup.number().min(1000).max(new Date().getFullYear()),
+  publisher: yup.string(),
+  coverURL: yup.string().url(),
+  skills: yup.array().of(yup.string()).min(1),
+}).required()
+
+const defaultBook: BookDTO = {
+  id: 0,
+  ISBN: "",
+  name: "",
+  author: "",
+  publisher: "",
+  coverURL: "",
+  skills: [],
+};
 
 type BookFormProps = {
   book?: BookDTO;
@@ -11,7 +34,11 @@ type BookFormProps = {
 };
 
 export const BookForm: React.FC<BookFormProps> = (props) => {
-  const { register, setValue, getValues, control, handleSubmit } = useForm<BookDTO>();
+  const { register, setValue, getValues, control, handleSubmit, formState } = useForm<BookDTO>({
+    defaultValues: props.book || defaultBook,
+    resolver: yupResolver(schema) as any,
+  });
+  const { errors } = formState;
 
   const cover = useWatch({ control, name: "coverURL" });
   const isbnRegister = register("ISBN");
@@ -19,6 +46,7 @@ export const BookForm: React.FC<BookFormProps> = (props) => {
   const handleISBNBlur = async (e: React.ChangeEvent<HTMLInputElement>) => {
     isbnRegister.onBlur(e);
     const isbn = e.target.value.replace(/\D+/g, "");
+    if (!isbn) return;
     const request = await fetch(`https://openlibrary.org/isbn/${isbn}.json`);
     const data = await request.json();
     setValue("name", data.title);
@@ -78,7 +106,7 @@ export const BookForm: React.FC<BookFormProps> = (props) => {
                 <tr>
                   <td className="hidden md:table-cell">ISBN</td>
                   <td>
-                    <label className="input input-bordered flex items-center gap-2">
+                    <label className={classNames("input input-bordered flex items-center gap-2", {"input-error": !!errors.ISBN?.message})}>
                       <input
                         defaultValue={props.book?.ISBN}
                         type="text"
@@ -95,9 +123,9 @@ export const BookForm: React.FC<BookFormProps> = (props) => {
                   <td className="hidden md:table-cell">Name</td>
                   <td>
                     <input
+                      className={classNames("input input-bordered w-full", {"input-error": !!errors.name?.message})}
                       defaultValue={props.book?.name}
                       type="text"
-                      className="input input-bordered w-full"
                       placeholder="Book Name"
                       {...register("name")}
                     />
@@ -109,7 +137,7 @@ export const BookForm: React.FC<BookFormProps> = (props) => {
                     <input
                       defaultValue={props.book?.author}
                       type="text"
-                      className="input input-bordered w-full"
+                      className={classNames("input input-bordered w-full", {"input-error": !!errors.author?.message})}
                       placeholder="Author"
                       {...register("author")}
                     />
@@ -121,7 +149,7 @@ export const BookForm: React.FC<BookFormProps> = (props) => {
                     <input
                       defaultValue={props.book?.year}
                       type="number"
-                      className="input input-bordered w-full"
+                      className={classNames("input input-bordered w-full", {"input-error": !!errors.year?.message})}
                       placeholder="Year"
                       {...register("year")}
                     />
@@ -133,7 +161,7 @@ export const BookForm: React.FC<BookFormProps> = (props) => {
                     <input
                       defaultValue={props.book?.publisher}
                       type="text"
-                      className="input input-bordered w-full"
+                      className={classNames("input input-bordered w-full", {"input-error": !!errors.publisher?.message})}
                       placeholder="Publisher"
                       {...register("publisher")}
                     />
@@ -145,7 +173,7 @@ export const BookForm: React.FC<BookFormProps> = (props) => {
                     <input
                       defaultValue={props.book?.coverURL}
                       type="text"
-                      className="input input-bordered w-full"
+                      className={classNames("input input-bordered w-full", {"input-error": !!errors.coverURL?.message})}
                       placeholder="Cover URL"
                       {...register("coverURL")}
                     />
@@ -158,7 +186,7 @@ export const BookForm: React.FC<BookFormProps> = (props) => {
                       name="skills"
                       control={control}
                       render={({ field }) => (
-                        <SkillSelector defaultValue={[]} {...field} />
+                        <SkillSelector defaultValue={[]} {...field} invalid={!!errors.skills?.message}/>
                       )}
                     />
                   </td>

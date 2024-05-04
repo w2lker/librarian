@@ -1,6 +1,15 @@
 import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup";
+
 import { TopicDTO } from "./TopicDTO";
 import { TagInput } from "./TagInput";
+import classNames from "classnames";
+
+const schema = yup.object({
+  tag: yup.string().required(),
+  description: yup.string().required(),
+});
 
 type TopicFormProps = {
   topic?: TopicDTO;
@@ -10,7 +19,10 @@ type TopicFormProps = {
 };
 
 export const TopicForm: React.FC<TopicFormProps> = ({topic, bookId, onSubmit}) => {
-  const { register, control, handleSubmit } = useForm<TopicDTO>();
+  const { register, control, handleSubmit, formState } = useForm<TopicDTO>({
+    resolver: yupResolver(schema) as any,
+  });
+  const { errors } = formState;
   const prepareData = (data: TopicDTO) => onSubmit({ ...(topic || {}), ...data, book_id: bookId });
 
   return (
@@ -22,14 +34,19 @@ export const TopicForm: React.FC<TopicFormProps> = ({topic, bookId, onSubmit}) =
               name="tag"
               control={control}
               render={({ field }) => (
-                <TagInput defaultValue={topic?.tag || ''} {...field} />
+                <TagInput defaultValue={topic?.tag || ''} {...field} invalid={!!errors.tag?.message}/>
               )}
             />
             <label className="form-control flex-1">
               <div className="label">
                 <span className="label-text">Description</span>
               </div>
-              <textarea defaultValue={topic?.description} className="textarea textarea-bordered h-64" placeholder="Description" {...register("description")} />
+              <textarea
+                defaultValue={topic?.description}
+                className={classNames("textarea textarea-bordered h-64", { "textarea-error": !!errors.description?.message })}
+                placeholder="Description"
+                {...register("description")}
+              />
             </label>
           </div>
           <div className="card-actions justify-end">

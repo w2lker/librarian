@@ -1,13 +1,15 @@
+import classNames from "classnames";
 import { TopicRepo } from "./TopicRepo";
 
 type TagInputProps = {
   defaultValue: string;
   value: string;
+  invalid: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
 };
 
-export const TagInput: React.FC<TagInputProps> = ({ value, defaultValue, onChange, onBlur }) => {
+export const TagInput: React.FC<TagInputProps> = ({ value, defaultValue, invalid, onChange, onBlur }) => {
   const { data: existingTags } = TopicRepo.useTags();
   const valueToFilter = (value || defaultValue || '').trim().toLowerCase();
 
@@ -22,7 +24,7 @@ export const TagInput: React.FC<TagInputProps> = ({ value, defaultValue, onChang
         <input
           type="text"
           placeholder="Type or select"
-          className="input input-bordered"
+          className={classNames("input input-bordered", { "input-error": invalid })}
           defaultValue={defaultValue}
           value={value}
           onChange={onChange}

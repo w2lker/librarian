@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { forwardRef } from "react";
 
 // const availableSkills = ['listening', 'speaking', 'reading', 'writing', 'grammar', 'vocabulary', 'pronunciation', 'fluency', 'comprehension', 'conversation', 'interview', 'presentation', 'business', 'travel', 'academic', 'test prep', 'other'];
@@ -6,10 +7,11 @@ const availableSkills = ['listening', 'speaking', 'reading', 'writing', 'grammar
 type SkillSelectorProps = {
   defaultValue?: string[];
   value: string[];
+  invalid: boolean;
   onChange: (value: string[]) => void;
 };
 
-export const SkillSelector = forwardRef<HTMLDivElement, SkillSelectorProps>(({value, defaultValue, onChange}, ref) => {
+export const SkillSelector = forwardRef<HTMLDivElement, SkillSelectorProps>(({value, defaultValue, invalid, onChange}, ref) => {
   const list = value || defaultValue;
   const selected = new Set(list);
 
@@ -27,7 +29,12 @@ export const SkillSelector = forwardRef<HTMLDivElement, SkillSelectorProps>(({va
         <div key={skill} className="form-control w-full md:w-2/5">
           <label className="label cursor-pointer mr-10">
             <span className="label-text">{skill}</span>
-            <input type="checkbox" className="checkbox" checked={selected.has(skill)} onChange={() => onToggleSkill(skill)} />
+            <input
+              type="checkbox"
+              className={classNames('checkbox', { "checkbox-error": invalid })}
+              checked={selected.has(skill)}
+              onChange={() => onToggleSkill(skill)}
+            />
           </label>
         </div>
       ))}
