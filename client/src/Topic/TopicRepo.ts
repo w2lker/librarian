@@ -1,13 +1,13 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { TopicAPI } from "./TopicAPI"
-import { TopicDTO } from "./TopicDTO";
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { TopicAPI } from './TopicAPI';
+import { TopicDTO } from './TopicDTO';
 
 export const TopicRepo = {
   useList: (bookId: number) => {
     return useQuery({
       queryKey: ['topics', bookId],
-      queryFn: () => TopicAPI.getList(bookId),
-    })
+      queryFn: () => TopicAPI.getList(bookId)
+    });
   },
   useCreate: () => {
     const queryClient = useQueryClient();
@@ -16,7 +16,7 @@ export const TopicRepo = {
       mutationFn: (topic: TopicDTO) => TopicAPI.addTopic(topic),
       onSuccess: (_, topic) => {
         queryClient.invalidateQueries({
-          queryKey: ['topics', topic.book_id],
+          queryKey: ['topics', topic.book_id]
         });
       }
     });
@@ -28,7 +28,7 @@ export const TopicRepo = {
       mutationFn: (topic: TopicDTO) => TopicAPI.updateTopic(topic),
       onSuccess: (_, topic) => {
         queryClient.invalidateQueries({
-          queryKey: ['topics', topic.book_id],
+          queryKey: ['topics', topic.book_id]
         });
       }
     });
@@ -37,10 +37,10 @@ export const TopicRepo = {
     const queryClient = useQueryClient();
 
     return useMutation({
-      mutationFn: (params: {topicId: number, bookId: number}) => TopicAPI.deleteTopic(params.topicId),
+      mutationFn: (params: { topicId: number; bookId: number }) => TopicAPI.deleteTopic(params.topicId),
       onSuccess: (_, params) => {
         queryClient.invalidateQueries({
-          queryKey: ['topics', params.bookId],
+          queryKey: ['topics', params.bookId]
         });
       }
     });
@@ -49,7 +49,7 @@ export const TopicRepo = {
   useTags: () => {
     return useQuery({
       queryKey: ['tags'],
-      queryFn: TopicAPI.tagList,
+      queryFn: TopicAPI.tagList
     });
   }
 };

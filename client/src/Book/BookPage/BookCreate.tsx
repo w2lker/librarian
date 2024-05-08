@@ -1,21 +1,23 @@
-import React from "react";
-import { BookForm } from "./BookForm";
-import { BookRepo } from "../BookRepo";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { BookHeader } from '../../Header/BookHeader';
+import { BookRepo } from '../BookRepo';
+import { BookForm } from './BookForm';
 
-type BookCreateProps = {
-  onSelect: (id: number) => void;
-  onCancel: VoidFunction;
-};
+export const BookCreate: React.FC = () => {
+  const navigate = useNavigate();
 
-export const BookCreate: React.FC<BookCreateProps> = ({onCancel, onSelect}) => {
   const { mutateAsync } = BookRepo.useCreate();
 
   const handleCreate = async (book: any) => {
     const result = await mutateAsync(book);
-    if (result) onSelect(result.id);
+    if (result) navigate(`/book/${result.id}`);
   };
 
   return (
-    <BookForm onCancel={onCancel} onSubmit={handleCreate} />
+    <>
+      <BookHeader />
+      <BookForm onCancel={() => navigate(-1)} onSubmit={handleCreate} />
+    </>
   );
 };

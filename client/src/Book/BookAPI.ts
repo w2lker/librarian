@@ -1,10 +1,10 @@
-import { BookDTO } from "./BookDTO";
+import { BookDTO } from './BookDTO';
 
 type BookPageDTO = {
-  data: BookDTO[],
-  page: string,
-  hasNext: boolean,
-}
+  data: BookDTO[];
+  page: string;
+  hasNext: boolean;
+};
 
 export const BookAPI = {
   getBooks: async (page: number): Promise<BookPageDTO> => {
@@ -19,9 +19,9 @@ export const BookAPI = {
     const response = await fetch('/api/books', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(book),
+      body: JSON.stringify(book)
     });
     return response.json();
   },
@@ -29,16 +29,16 @@ export const BookAPI = {
     const response = await fetch(`/api/books/${book.id}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(book),
+      body: JSON.stringify(book)
     });
     return response.json();
   },
   deleteBook: async (id: number) => {
     await fetch(`/api/books/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     });
     return {};
-  },
+  }
 };

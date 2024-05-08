@@ -1,6 +1,6 @@
-import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { BookAPI } from "./BookAPI"
-import { BookDTO } from "./BookDTO"
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { BookAPI } from './BookAPI';
+import { BookDTO } from './BookDTO';
 
 export const BookRepo = {
   useList: () => {
@@ -8,15 +8,17 @@ export const BookRepo = {
       queryKey: ['books'],
       queryFn: ({ pageParam }) => BookAPI.getBooks(pageParam),
       initialPageParam: 1,
-      getNextPageParam: (lastPage) => lastPage.hasNext ? parseInt(lastPage.page) + 1 : undefined,
-    })
+      getNextPageParam: (lastPage) => (lastPage.hasNext ? parseInt(lastPage.page) + 1 : undefined),
+      staleTime: 1000 * 60 * 5
+    });
   },
 
   useItem: (id: number) => {
     return useQuery({
-      queryKey: ["book", id],
+      queryKey: ['book', id],
       queryFn: () => BookAPI.getBook(id),
-    })
+      staleTime: 1000 * 60 * 5
+    });
   },
 
   useCreate: () => {
@@ -26,10 +28,10 @@ export const BookRepo = {
       mutationFn: (book: BookDTO) => BookAPI.addBook(book),
       onSuccess: (data) => {
         queryClient.invalidateQueries({
-          queryKey: ["books"],
+          queryKey: ['books']
         });
         queryClient.invalidateQueries({
-          queryKey: ["book", data.id],
+          queryKey: ['book', data.id]
         });
       }
     });
@@ -42,10 +44,10 @@ export const BookRepo = {
       mutationFn: (book: BookDTO) => BookAPI.updateBook(book),
       onSuccess: (data) => {
         queryClient.invalidateQueries({
-          queryKey: ["books"],
+          queryKey: ['books']
         });
         queryClient.invalidateQueries({
-          queryKey: ["book", data.id],
+          queryKey: ['book', data.id]
         });
       }
     });
@@ -58,12 +60,12 @@ export const BookRepo = {
       mutationFn: (id: number) => BookAPI.deleteBook(id),
       onSuccess: (_data, id) => {
         queryClient.invalidateQueries({
-          queryKey: ["books"],
+          queryKey: ['books']
         });
         queryClient.invalidateQueries({
-          queryKey: ["book", id],
+          queryKey: ['book', id]
         });
       }
     });
   }
-}
+};

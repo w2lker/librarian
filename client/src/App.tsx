@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { BookList } from './Book/BookList/BookList';
-import { Header } from './Header';
-import { BookPage } from './Book/BookPage/BookPage';
 import { BookCreate } from './Book/BookPage/BookCreate';
+import { BookPage } from './Book/BookPage/BookPage';
+import { LookupPage } from './Lookup/LookupPage';
 
 const App = () => {
   const [bookId, setBookId] = useState<number>();
@@ -17,20 +18,20 @@ const App = () => {
   const handleCreated = (id: number) => {
     setBookId(id);
     setIsCreating(false);
-  }
+  };
 
   return (
     <div className="App">
-      <Header
-        bookSelected={!!bookId}
-        onBack={handleBack}
-        onCreate={() => {setIsCreating(true)}}
-      />
-      {!isCreating && !bookId && <BookList onSelect={(id) => setBookId(id)}/>}
-      {!!bookId && <BookPage bookId={bookId} onClose={handleBack}/>}
-      {isCreating && <BookCreate onSelect={handleCreated} onCancel={handleBack}/>}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<BookList />} />
+          <Route path="/book/:id" element={<BookPage />} />
+          <Route path="/create" element={<BookCreate />} />
+          <Route path="/search" element={<LookupPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

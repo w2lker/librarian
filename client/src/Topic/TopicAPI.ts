@@ -1,5 +1,4 @@
-import { TopicDTO } from "./TopicDTO";
-
+import { TopicDTO, TopicWithBookDTO } from './TopicDTO';
 
 export const TopicAPI = {
   getList: async (bookId: number): Promise<TopicDTO[]> => {
@@ -10,9 +9,9 @@ export const TopicAPI = {
     const response = await fetch('/api/topics', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(topic),
+      body: JSON.stringify(topic)
     });
     return response.json();
   },
@@ -20,17 +19,21 @@ export const TopicAPI = {
     const response = await fetch(`/api/topics/${topic.id}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(topic),
+      body: JSON.stringify(topic)
     });
     return response.json();
   },
   deleteTopic: async (id: number) => {
     await fetch(`/api/topics/${id}`, {
-      method: 'DELETE',
+      method: 'DELETE'
     });
     return {};
+  },
+  searchTopics: async (queryParams: URLSearchParams): Promise<TopicWithBookDTO[]> => {
+    const response = await fetch(`/api/topics/search?${queryParams.toString()}`)
+    return response.json();
   },
   tagList: async (): Promise<string[]> => {
     const response = await fetch('/api/unique_tags');

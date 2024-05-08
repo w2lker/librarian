@@ -2,18 +2,26 @@ import classNames from "classnames";
 import { TopicRepo } from "./TopicRepo";
 
 type TagInputProps = {
-  defaultValue: string;
+  defaultValue?: string;
   value: string;
-  invalid: boolean;
+  invalid?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 };
 
-export const TagInput: React.FC<TagInputProps> = ({ value, defaultValue, invalid, onChange, onBlur }) => {
+export const TagInput: React.FC<TagInputProps> = ({
+  value,
+  defaultValue,
+  invalid,
+  onChange,
+  onBlur,
+}) => {
   const { data: existingTags } = TopicRepo.useTags();
-  const valueToFilter = (value || defaultValue || '').trim().toLowerCase();
+  const valueToFilter = (value || defaultValue || "").trim().toLowerCase();
 
-  const suggestions = (existingTags || []).filter((tag) => tag.toLowerCase().includes(valueToFilter)).splice(0, 4);
+  const suggestions = (existingTags || [])
+    .filter((tag) => tag.toLowerCase().includes(valueToFilter))
+    .splice(0, 4);
 
   return (
     <div className="flex-1">
@@ -24,7 +32,9 @@ export const TagInput: React.FC<TagInputProps> = ({ value, defaultValue, invalid
         <input
           type="text"
           placeholder="Type or select"
-          className={classNames("input input-bordered", { "input-error": invalid })}
+          className={classNames("input input-bordered", {
+            "input-error": invalid,
+          })}
           defaultValue={defaultValue}
           value={value}
           onChange={onChange}
@@ -39,7 +49,9 @@ export const TagInput: React.FC<TagInputProps> = ({ value, defaultValue, invalid
           <ul className="menu bg-base-200 rounded-box">
             {suggestions.map((tag) => (
               <li key={tag}>
-                <a onClick={() => onChange({ target: { value: tag }} as any)}>{tag}</a>
+                <a onClick={() => onChange({ target: { value: tag } } as any)}>
+                  {tag}
+                </a>
               </li>
             ))}
           </ul>

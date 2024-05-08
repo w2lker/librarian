@@ -34,6 +34,28 @@ module Api
       render json: tags
     end
 
+    def search
+      topics = Topic.joins(:book).where(nil)
+
+      # Topic based attributes
+      topics = topics.where('LOWER(topics.tag) LIKE LOWER(?)', "%#{params[:tag]}%") if params[:tag].present?
+      topics = topics.where('LOWER(topics.description) LIKE LOWER(?)', "%#{params[:description]}%") if params[:description].present?
+
+      # Book based attributes
+      topics = topics.where('LOWER(books.name) LIKE LOWER(?)', "%#{params[:book_name]}%") if params[:book_name].present?
+      topics = topics.where('LOWER(books.author) LIKE LOWER(?)', "%#{params[:author]}%") if params[:author].present?
+      topics = topics.where('LOWER(books.publisher) LIKE LOWER(?)', "%#{params[:publisher]}%") if params[:publisher].present?
+      topics = topics.where('books.year = ?', params[:year]) if params[:year].present?
+      topics = topics.where('books.ISBN = ?', params[:ISBN]) if params[:ISBN].present?
+      # TODO
+      # topics = topics.where('books.skills @> ARRAY[?]::varchar[]', params[:skill]) if params[:skills].present?
+
+
+      topics = topics.limit(50)
+
+      render json: topics, each_serializer: TopicWithBookSerializer
+    end
+
     private
 
     def topic_params

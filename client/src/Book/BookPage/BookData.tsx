@@ -1,5 +1,5 @@
-import { BookDTO } from "../BookDTO";
-import { BookDelete } from "./BookDelete";
+import { BookDTO } from '../BookDTO';
+import { BookDelete } from './BookDelete';
 
 type BookDataProps = {
   book: BookDTO;
@@ -7,20 +7,12 @@ type BookDataProps = {
   onDelete: VoidFunction;
 };
 
-export const BookData: React.FC<BookDataProps> = ({book, onEdit, onDelete}) => {
+export const BookData: React.FC<BookDataProps> = ({ book, onEdit, onDelete }) => {
   return (
     <div className="max-w-screen-lg mx-auto p-4 flex flex-wrap">
       <div className="w-full md:w-1/2 lg:w-1/3">
-        {book.coverURL && (
-          <img
-            src={book.coverURL}
-            className="w-full h-auto shadow-md rounded-lg"
-            alt="book cover"
-          />
-        )}
-        {!book.coverURL && (
-          <div className="placeholder  w-full h-72 rounded-xl bg-slate-200"></div>
-        )}
+        {book.coverURL && <img src={book.coverURL} className="w-full h-auto shadow-md rounded-lg" alt="book cover" />}
+        {!book.coverURL && <div className="placeholder  w-full h-72 rounded-xl bg-slate-200"></div>}
       </div>
 
       <div className="w-full md:w-1/2 lg:w-2/3 p-4">
@@ -51,16 +43,20 @@ export const BookData: React.FC<BookDataProps> = ({book, onEdit, onDelete}) => {
                 <td>Skills</td>
                 <td>
                   {book.skills.map((skill) => (
-                    <div key={skill} className="badge badge-neutral mr-3">{skill}</div>
+                    <div key={skill} className="badge badge-neutral mr-3">
+                      {skill}
+                    </div>
                   ))}
                 </td>
               </tr>
             </tbody>
           </table>
-          <button className="btn btn-primary btn-outline mt-4 float-left" onClick={onEdit}>Edit book</button>
+          <button className="btn btn-primary btn-outline mt-4 float-left" onClick={onEdit}>
+            Edit book
+          </button>
           <BookDelete bookId={book.id} onDelete={onDelete} />
         </div>
       </div>
     </div>
-  )
+  );
 };
