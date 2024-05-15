@@ -11,7 +11,7 @@ export const BookCreate: React.FC = () => {
 
   const handleCreate = async (book: any) => {
     const result = await mutateAsync(book);
-    if (result) navigate(`/book/${result.id}`);
+    if (result) navigate(`/book/${result.id}`, { replace: true });
   };
 
   return (
