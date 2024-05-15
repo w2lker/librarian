@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { BookList } from './Book/BookList/BookList';
 import { BookCreate } from './Book/BookPage/BookCreate';
@@ -22,14 +22,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<BookList />} />
           <Route path="/book/:id" element={<BookPage />} />
           <Route path="/create" element={<BookCreate />} />
           <Route path="/search" element={<LookupPage />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 };

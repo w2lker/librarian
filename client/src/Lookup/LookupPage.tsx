@@ -7,9 +7,8 @@ import { LookupTopic } from "./LookupTopic";
 export const LookupPage: React.FC = () => {
   const [showFilters, setShowFilters] = useState(true);
   const { searchParams, searchQuery } = LookupRepo.useParamQuery();
-  console.log(searchParams.toString());
   const { data, isSuccess } = LookupRepo.useSearch(searchParams);
-  console.log(data);
+
   return (
     <div>
       <LookupHeader
