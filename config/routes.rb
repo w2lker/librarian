@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static/index'
   namespace :api do
     resources :books, only: [:index, :show, :create, :update, :destroy]
 
@@ -11,6 +12,5 @@ Rails.application.routes.draw do
     get 'unique_tags', to: 'topics#unique_tags'
   end
 
-  get '*path', to: 'fallback#index', constraints: ->(request) { !request.xhr? && request.format.html? }
-  root to: 'fallback#index'
+  root to: 'static#index'
 end
