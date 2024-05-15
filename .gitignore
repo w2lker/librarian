@@ -20,8 +20,6 @@ db/*.sqlite3-journal
 !/log/.keep
 !/tmp/.keep
 
-# Ignore uploaded files in development.
-/storage/*
 !/storage/.keep
 
 # Ignore master key for decrypting credentials and more.
